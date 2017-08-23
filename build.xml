@@ -1,0 +1,26 @@
+<project name="Sample usage of Salesforce Ant tasks" default="" basedir="./src" xmlns:sf="antlib:com.salesforce">
+
+    <property file="build.properties"/>
+    <property environment="env"/>
+	
+	<!-- Test out deploy and retrieve verbs for package  -->
+    <target name="retrieveCode">
+      <!-- Retrieve the contents into another directory -->
+      <sf:retrieve username="mnunnagopula@miraclesoft.com.cm" password="mounika828Zq4If9IkE6hZHoMtkilhMDsAL" serverurl="https://login.salesforce.com" retrieveTarget="src" unpackaged="package.xml"/>
+    </target>
+
+	<!-- Shows deploying code, running all tests, and running tests (1 of which fails), and logging. -->
+	<target name="deployCodeFailingTest">
+	   <!-- Upload the contents of the "codepkg" package, running all tests -->
+	   <sf:deploy username="mnunnagopula@miraclesoft.com.cm" password="mounika828Zq4If9IkE6hZHoMtkilhMDsAL" serverurl="https://login.salesforce.com" maxPoll="20" deployRoot="src" testLevel="RunAllTestsInOrg" rollbackOnError="true" logType="Debugonly"/>
+	</target>
+
+	 
+	<target name="quickDeploy">
+	   <sf:deploy username="mnunnagopula@miraclesoft.com" password="1234abcdZHAWpWgKvN1f3ymcV12uLgqfN" serverurl="https://login.salesforce.com" deployRoot="src" runAllTests="false" />
+	</target>
+		
+		 
+	
+	
+</project>	
